@@ -26,4 +26,14 @@ class CLASSE:
     def readAll(self):
         classes=self.ses.query(self.classe).all()
         return classes
-
+    def readByID(self):
+        pass
+    def create(self):
+        pass
+    def update(self):
+        pass
+    def delete(self):
+        pass
+    #Destrutor para lembrar de encerrar a sessão quando finalizar
+    def __del__(self):
+        self.ses.close()
