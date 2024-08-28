@@ -37,3 +37,15 @@ class CLASSE:
     #Destrutor para lembrar de encerrar a sessão quando finalizar
     def __del__(self):
         self.ses.close()
+
+class ANOTACAO:
+    def __init__(self):
+        self.classe=DB.classes.CLASSE
+        self.anotacao=DB.classes.ANOTACAO
+        self.imagem=DB.classes.IMAGEM
+
+        self.ses = session_factory()
+    def readAll(self):
+        pass
+    def readByID(self):
+        pass
