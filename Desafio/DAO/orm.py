@@ -47,13 +47,9 @@ class CLASSE(ObjetoBanco):
     def __del__(self):
         self.ses.close()
 
-class ANOTACAO:
+class ANOTACAO(ObjetoBanco):
     def __init__(self):
-        self.classe=DB.classes.CLASSE
-        self.anotacao=DB.classes.ANOTACAO
-        self.imagem=DB.classes.IMAGEM
-
-        self.ses = session_factory()
+        super().__init__()
     def readAll(self):
         anotacoes=self.ses.query(self.anotacao).all()
         return anotacoes
@@ -67,13 +63,9 @@ class ANOTACAO:
         pass
     def __del__(self):
         self.ses.close()
-class IMAGEM:
+class IMAGEM(ObjetoBanco):
     def __init__(self):
-        self.classe = DB.classes.CLASSE
-        self.anotacao = DB.classes.ANOTACAO
-        self.imagem = DB.classes.IMAGEM
-
-        self.ses = session_factory()
+        super().__init__()
     def readAll(self):
         imagens=self.ses.query(self.imagem).all()
         return imagens
