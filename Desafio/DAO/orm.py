@@ -41,9 +41,10 @@ class CLASSE(ObjetoBanco):
         self.ses.add(classe)
         self.ses.commit()
     def update(self):
-        pass
-    def delete(self):
-        pass
+        self.ses.commit()
+    def delete(self,classe):
+        self.ses.delete(classe)
+        self.ses.commit()
     #Destrutor para lembrar de encerrar a sessão quando finalizar
     def __del__(self):
         self.ses.close()
