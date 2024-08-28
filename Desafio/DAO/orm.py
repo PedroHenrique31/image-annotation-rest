@@ -61,12 +61,15 @@ class ANOTACAO(ObjetoBanco):
     def create(self,anotacao):
         self.ses.add(anotacao)
         self.ses.commit()
-    def update(self,anotacao):
-        pass
+    def update(self):
+        self.ses.commit()
     def delete(self,anotacao):
-        pass
+        self.ses.delete(anotacao)
+        self.ses.commit()
     def __del__(self):
         self.ses.close()
+
+
 class IMAGEM(ObjetoBanco):
     def __init__(self):
         super().__init__()
@@ -77,8 +80,8 @@ class IMAGEM(ObjetoBanco):
         pass
     def create(self,imagem):
         pass
-    def update(self,imagem):
-        pass
+    def update(self):
+        self.ses.commit()
     def delete(self,imagem):
         pass
     def __del__(self):
