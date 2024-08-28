@@ -57,11 +57,11 @@ class ANOTACAO(ObjetoBanco):
         return anotacoes
     def readByID(self):
         pass
-    def create(self):
+    def create(self,anotacao):
         pass
-    def update(self):
+    def update(self,anotacao):
         pass
-    def delete(self):
+    def delete(self,anotacao):
         pass
     def __del__(self):
         self.ses.close()
@@ -73,11 +73,11 @@ class IMAGEM(ObjetoBanco):
         return imagens
     def readByID(self):
         pass
-    def create(self):
+    def create(self,imagem):
         pass
-    def update(self):
+    def update(self,imagem):
         pass
-    def delete(self):
+    def delete(self,imagem):
         pass
     def __del__(self):
         self.ses.close()
