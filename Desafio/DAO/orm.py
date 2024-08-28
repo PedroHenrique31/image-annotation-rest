@@ -14,6 +14,7 @@ DB.prepare(engine, reflect=True)
 # Cria um objeto para abrir uma sessão com o banco
 session_factory = sessionmaker(bind=engine)
 
+
 class CLASSE:
     def __init__(self):
         #Criei esses objetos apenas para abreviar as chamadas a esses objeto ao longo do código
@@ -46,6 +47,35 @@ class ANOTACAO:
 
         self.ses = session_factory()
     def readAll(self):
-        pass
+        anotacoes=self.ses.query(self.anotacao).all()
+        return anotacoes
     def readByID(self):
         pass
+    def create(self):
+        pass
+    def update(self):
+        pass
+    def delete(self):
+        pass
+    def __del__(self):
+        self.ses.close()
+class IMAGEM:
+    def __init__(self):
+        self.classe = DB.classes.CLASSE
+        self.anotacao = DB.classes.ANOTACAO
+        self.imagem = DB.classes.IMAGEM
+
+        self.ses = session_factory()
+    def readAll(self):
+        imagens=self.ses.query(self.imagem).all()
+        return imagens
+    def readByID(self):
+        pass
+    def create(self):
+        pass
+    def update(self):
+        pass
+    def delete(self):
+        pass
+    def __del__(self):
+        self.ses.close()
