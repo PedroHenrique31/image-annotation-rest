@@ -1,6 +1,6 @@
 import orm
 
-daoClasse=orm.CLASSES()
+daoClasse=orm.CLASSE()
 
 def testeLer():
     classes=daoClasse.readAll()
