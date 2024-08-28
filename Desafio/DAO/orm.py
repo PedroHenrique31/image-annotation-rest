@@ -55,10 +55,12 @@ class ANOTACAO(ObjetoBanco):
     def readAll(self):
         anotacoes=self.ses.query(self.anotacao).all()
         return anotacoes
-    def readByID(self):
-        pass
+    def readByID(self,id):
+        anotacao=self.ses.query(self.anotacao).filter_by(COD=id).first()
+        return anotacao
     def create(self,anotacao):
-        pass
+        self.ses.add(anotacao)
+        self.ses.commit()
     def update(self,anotacao):
         pass
     def delete(self,anotacao):
