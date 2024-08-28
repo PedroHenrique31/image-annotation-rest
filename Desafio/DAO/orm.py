@@ -30,15 +30,16 @@ class CLASSE(ObjetoBanco):
     def __init__(self):
         super().__init__()
 
-
     # Exemplo de chamada, realiza uma busca por todas as classes da tabela e retorna em uma lista
     def readAll(self):
         classes=self.ses.query(self.classe).all()
         return classes
-    def readByID(self):
-        pass
-    def create(self):
-        pass
+    def readByID(self,id):
+        classe=self.ses.query(self.classe).filter_by(COD=id).first()
+        return classe
+    def create(self,classe):
+        self.ses.add(classe)
+        self.ses.commit()
     def update(self):
         pass
     def delete(self):
