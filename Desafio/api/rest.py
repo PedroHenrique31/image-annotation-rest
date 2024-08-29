@@ -10,10 +10,14 @@ from DAO import *
  JSONFIY para serializar.
 """
 dadosClasse=DAO.orm.CLASSE()
+dadosAnotacao=DAO.orm.ANOTACAO()
 
 class classeSchema(SQLAlchemyAutoSchema):
     class Meta:
         model=dadosClasse.classe
+class anotacaoSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model=dadosAnotacao.anotacao
 
 
 class ClasseRest(Resource):
@@ -66,5 +70,13 @@ class ClasseRest(Resource):
 #######################################
 class AnotacaoRest(Resource):
     def __init__(self):
-        self.campos=[]
-
+        self.campos=['COD','COD_CLASSE','CENTRO_X','CENTRO_Y','LARGURA','ALTURA','CONFIANCA',
+                     'ERRADA','COD_IMAGEM']
+    def get(self):
+        pass
+    def put(self):
+        pass
+    def post(self):
+        pass
+    def delete(self):
+        pass
