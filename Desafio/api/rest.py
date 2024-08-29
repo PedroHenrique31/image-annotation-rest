@@ -55,7 +55,14 @@ class ClasseRest(Resource):
                     return jsonify({'update':obj.COD})
     # Apaga um registro de classe
     def delete(self):
-        pass
+        #Procura pelo ID
+        id=request.args.get(self.campos[0])
+        obj = dadosClasse.readByID(id)
+        if obj is None:
+            return jsonify({"delete":0})
+        else:
+            dadosClasse.delete(obj)
+            return jsonify({"delete":id})
 #######################################
 class AnotacaoRest(Resource):
     def __init__(self):
