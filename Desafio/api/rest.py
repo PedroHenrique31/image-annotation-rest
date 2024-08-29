@@ -27,11 +27,14 @@ class ClasseRest(Resource):
             schema=classeSchema() # Cria uma tupla com o modelo classe
             resultado=schema.dump(obj) # cria um dicionário com o modelo, um dicionario é quase um JSON
             return jsonify(resultado) # gera o JSON a partir do dicionário e retorna o resultado
-        elif request.args.get(self.campos) is not None:
+        # Se a solicitacao enviar o campo CLASSE, faz as pesquisa inversa
+        elif request.args.get(self.campos[1]) is not None:
             pass
+        # Se a solicitação não informa nenhum argumento retorna todos os dados
         else:
-            pass
-
+            lista=dadosClasse.readAll()
+            schema=classeSchema(many=True) # Avisa que tem serializar muitos
+            return jsonify(schema.dump(lista)) # Passa tudo pra JSON
     def post(self):
         pass
     def put(self):
