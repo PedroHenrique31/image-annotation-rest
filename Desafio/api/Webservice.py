@@ -1,5 +1,5 @@
 from flask import Flask,request,send_file
-#from flask_cors import CORS
+#from flask_cors import CORS #Desabilitar depois
 from flask_restful import Api
 import rest
 
