@@ -35,10 +35,25 @@ class ClasseRest(Resource):
             lista=dadosClasse.readAll()
             schema=classeSchema(many=True) # Avisa que tem serializar muitos
             return jsonify(schema.dump(lista)) # Passa tudo pra JSON
+    # Insere um novo registro de classe
     def post(self):
-        pass
+        obj=dadosClasse.classe() # cria um objeto do tipo classe
+        obj.CLASSE=request.args.get("NOME")
+        dadosClasse.create(obj)
+        return jsonify({'insert':obj.COD})
+    # Altera um registro de classe
     def put(self):
-        pass
+        obj = dadosClasse.readByID(request.args.get(self.campos[0])) #Procura  objeto pelo ID
+        if obj is None:
+            return jsonify({'update':0})
+        else:
+            # Usa programação reflexiva para alterar cada campo do objeto que foi alterado
+            for c in self.campos:
+                if request.args.get(c) is not None:
+                    exec('obj.{} =request.args.get("{}")'.format(c, c))
+                    dadosClasse.update()
+                    return jsonify({'update':obj.COD})
+    # Apaga um registro de classe
     def delete(self):
         pass
 #######################################
