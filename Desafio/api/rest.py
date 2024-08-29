@@ -88,8 +88,31 @@ class AnotacaoRest(Resource):
             schema=anotacaoSchema(many=True)
             return jsonify(schema.dump(lista))
     def put(self):
-        pass
+        obj = dadosAnotacao.readByID(request.args.get(self.campos[0])) #Procura  objeto pelo ID
+        if obj is None:
+            return jsonify({'update':0})
+        else:
+            # Usa programação reflexiva para alterar cada campo do objeto que foi alterado
+            for c in self.campos:
+                if request.args.get(c) is not None:
+                    exec('obj.{} =request.args.get("{}")'.format(c, c))
+                    dadosAnotacao.update()
+                    return jsonify({'update':obj.COD})
     def post(self):
-        pass
+        obj=dadosAnotacao.anotacao() # cria um objeto do tipo classe
+        # Para cada campo de anotacao executa essa linha
+        for c in self.campos:
+            if c!='COD':
+                exec("obj.{}=request.args.get('{}')".format(c,c))
+
+        dadosClasse.create(obj)
+        return jsonify({'insert':obj.COD})
     def delete(self):
-        pass
+        #Procura pelo ID
+        id=request.args.get(self.campos[0])
+        obj = dadosAnotacao.readByID(id)
+        if obj is None:
+            return jsonify({"delete":0})
+        else:
+            dadosAnotacao.delete(obj)
+            return jsonify({"delete":id})
