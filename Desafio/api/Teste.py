@@ -6,3 +6,4 @@ import rest
 
 
 tabelaClasse=rest.ClasseRest()
+tabelaAnotacao=rest.AnotacaoRest()

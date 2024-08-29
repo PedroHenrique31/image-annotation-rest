@@ -73,7 +73,20 @@ class AnotacaoRest(Resource):
         self.campos=['COD','COD_CLASSE','CENTRO_X','CENTRO_Y','LARGURA','ALTURA','CONFIANCA',
                      'ERRADA','COD_IMAGEM']
     def get(self):
-        pass
+        if request.args.get(self.campos[0]) is not None:
+            id_anotacao=request.args.get(self.campos[0])
+            obj=dadosAnotacao.readByID(id_anotacao)
+            schema=anotacaoSchema()
+            anot=schema.dump(obj)
+            # Aqui podemos fazer algumas alteracoes no dicionario para mostrar outras coisas
+            return jsonify(anot)
+        # Acrescentar campos para pesquisa
+        elif request.args.get(self.campos[1]) is not None:
+            pass
+        else:
+            lista=dadosAnotacao.readAll()
+            schema=anotacaoSchema(many=True)
+            return jsonify(schema.dump(lista))
     def put(self):
         pass
     def post(self):
