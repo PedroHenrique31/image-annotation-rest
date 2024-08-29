@@ -7,7 +7,7 @@ app=Flask(__name__)
 api=Api(app)
 
 api.add_resource(rest.ClasseRest,'/ClasseObjetos',endpoint='classes')
-api.add_resource(rest.AnotacaoRest,'/Anotacoes',endpoint='anotacoes')
+api.add_resource(rest.AnotacaoRest,'/Anotacoes',endpoint='anotacoes ')
 
 
 
