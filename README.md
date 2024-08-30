@@ -20,3 +20,12 @@ Note que a API devolve um JSON com as classes de veículos,
 e aqui temos a imagem do servidor Flask recebendo a requisição:
 
 ![Imagem Flask recebendo o GET](tela_cmd_Flask.PNG)
+
+
+Testada também a situação onde queremos acessar uma única anotacao:
+![Imagem anotacao unica](anotacao_unica.PNG)
+
+Alguns memlhoramentos ainda podem ser feitos, como máscaras para
+visualização do resultado de anotações como booleanos e uma função
+de pesquisa por anotações erradas. Tudo 
+isso será implementado em breve, porém todas as funções foram aprovadas nos testes.

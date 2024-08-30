@@ -79,6 +79,8 @@ class AnotacaoRest(Resource):
             schema=anotacaoSchema()
             anot=schema.dump(obj)
             # Aqui podemos fazer algumas alteracoes no dicionario para mostrar outras coisas
+            anot['CLASSE']=obj.classe.CLASSE #Coloca o nome no lugar do COD
+            #anot['IMAGEM']=None #Eu poderia retornar a imagem, mas isso iria lotar a API de info e gastar muita banda
             return jsonify(anot)
         # Acrescentar campos para pesquisa
         elif request.args.get(self.campos[1]) is not None:
