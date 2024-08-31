@@ -29,3 +29,18 @@ Alguns memlhoramentos ainda podem ser feitos, como máscaras para
 visualização do resultado de anotações como booleanos e uma função
 de pesquisa por anotações erradas. Tudo 
 isso será implementado em breve, porém todas as funções foram aprovadas nos testes.
+
+Seguem as telas de resposta para outras chamadas HTTP, apenas como exemplo:
+
+Para o POST é feita a inserção de um objeto novo no banco e a API retorna a sua chave primária gerada.
+![Imagem POST](classe_post.PNG)
+
+Para o PUT é feita a alteração de um registro no banco e dessa vez ele retorna a chave primária que o identifica, ou 0 para avisar
+que o objeto não foi encontrado
+![Imagem PUT](put_classe.PNG)
+
+E no caso de um DELETE a API retorna a chave primária do objeto deletado ou 0 
+caso não o encontre
+![Imagem DELETE](delete_classe.PNG)
+
+O funcionamento é análogo para a Anotação, porém o JSON é mais verboso.
